@@ -1,0 +1,16 @@
+version: "3.6"
+services:
+  mail-sender:
+    build:
+      context: ./
+    depends_on:
+      - mailhog
+  mailhog:
+    image: mailhog/mailhog:latest
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+networks: 
+  default: 
+    external: 
+      name: external-network
